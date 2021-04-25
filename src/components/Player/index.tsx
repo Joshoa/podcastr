@@ -18,7 +18,7 @@ export function Player() {
 
   const CustomSwitch = withStyles({
     switchBase: {
-      color: deepPurple[800],
+      color: deepPurple[50],
       '&$checked': {
         color: deepPurple[50],
       },
