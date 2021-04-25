@@ -7,6 +7,19 @@
     margin-top: 3rem;
     margin-bottom: 1.5rem;
   }
+
+  &.darkTheme {
+    color: var(--white);
+
+    a {
+      color: var(--pink);
+    }
+
+    button {
+      background: var(--dark-background);
+      border-color: var(--red);
+    }
+  }
 }
 
 .latestEpisodes {
@@ -25,6 +38,11 @@
 
       display: flex;
       align-items: center;
+
+      &.darkTheme {
+        background: var(--dark-purple-easy);
+        border: 1px solid var(--pink);
+      }
     }
 
     img {
@@ -47,6 +65,12 @@
 
         &:hover {
           text-decoration: underline;
+        }
+      }
+
+      &.darkTheme {
+        a {
+          color: var(--pink);
         }
       }
 

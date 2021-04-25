@@ -1,0 +1,16 @@
+.container {
+    display:flex;
+
+    &.darkTheme {
+      color: var(--pink);
+      background-color: var(--dark-purple);
+
+      h2 {
+        color: var(--white);
+      }
+    }
+  
+    main {
+      flex: 1
+    }
+}

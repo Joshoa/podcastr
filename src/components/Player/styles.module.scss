@@ -14,7 +14,23 @@
   header {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    flex-direction: column;
+    position: relative;
+
+    .switchContainer {
+      margin-top: 1rem;
+      margin-left: 2rem;
+    }
+
+    .playerHeader {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  &.darkTheme {
+    background: var(--dark-background);
   }
 
   strong {

@@ -1,17 +1,34 @@
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'rc-slider';
+import { Switch, withStyles } from '@material-ui/core';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import { usePlayer } from '../../contexts/PlayerContext';
 import { convertDurationToTimeString } from '../../utils/convertDurationToTimeString';
 
 import 'rc-slider/assets/index.css';
 import styles from './styles.module.scss';
+import { deepPurple } from '@material-ui/core/colors';
 
 export function Player() {
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const [progress, setProgress] = useState(0);
+
+  const CustomSwitch = withStyles({
+    switchBase: {
+      color: deepPurple[800],
+      '&$checked': {
+        color: deepPurple[50],
+      },
+      '&$checked + $track': {
+        backgroundColor: deepPurple[800],
+      },
+    },
+    checked: {},
+    track: {},
+  })(Switch);
 
   const { 
     episodeList, 
@@ -27,7 +44,9 @@ export function Player() {
     toggleLoop,
     isShuffling,
     toggleShuffle,
-    clearPlayerState
+    clearPlayerState,
+    isDarkTheme,
+    changeTheme
   } = usePlayer();
 
   useEffect(() => {
@@ -67,10 +86,25 @@ export function Player() {
   const episode = episodeList[currentEpisodeIndex]
 
   return(
-    <div className={styles.playerContainer}>
+    <div className={isDarkTheme ? styles.playerContainer + ' ' + styles.darkTheme
+                     : styles.playerContainer}>
       <header>
-        <img src="/playing.svg" alt="Tocando agora"/>
-        <strong>Tocando agora</strong>
+        <div className={styles.playerHeader}>
+          <img src="/playing.svg" alt="Tocando agora"/>
+          <strong>Tocando agora</strong>
+        </div>
+        <div className={styles.switchContainer}>
+          <FormControlLabel
+            control={
+              <CustomSwitch 
+                size="small"
+                checked={isDarkTheme} 
+                onChange={changeTheme} 
+              />
+            }
+            label="Dark Theme"
+          />
+        </div>
       </header>
 
       {episode ? (

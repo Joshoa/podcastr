@@ -3,6 +3,30 @@
   padding: 3rem 2rem;
   margin: 0 auto;
 
+  &.darkTheme {
+
+    h1 {
+      color: var(--pink);
+    }
+
+    header {
+      border-bottom: 1px solid var(--dark-purple-easy);
+    }
+
+    .thumbnailContainer {
+      border: 1px solid var(--pink);
+      border-radius: 1rem;
+    }
+
+    span {
+      color: var(--red);
+    }
+
+    p {
+      color: var(--white);
+    }
+  }
+
   .thumbnailContainer {
     position: relative;
 

@@ -22,4 +22,13 @@
   span {
     margin-left: auto;
   }
+
+  &.darkTheme {
+    background: var(--dark-purple);
+    border-bottom: 1px solid var(--pink);
+
+    p {
+      border-left: 1px solid var(--pink);
+    }
+  } 
 }

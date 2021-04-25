@@ -25,6 +25,8 @@ type PlayerContextData = {
   isShuffling: boolean;
   toggleShuffle: () => void;
   clearPlayerState: () => void;
+  isDarkTheme: boolean;
+  changeTheme: () => void;
 }
 
 export const PlayerContext = createContext({} as PlayerContextData);
@@ -39,6 +41,7 @@ export function PlayerContextProvider({ children }: PlayerContextProviderProps) 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLooping, setIsLooping] = useState(false);
   const [isShuffling, setIsShuffling] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   function play(episode) {
     setEpisodeList([episode]);
@@ -66,6 +69,10 @@ export function PlayerContextProvider({ children }: PlayerContextProviderProps) 
 
   function setPlayingState(state: boolean) {
     setIsPlaying(state);
+  }
+
+  function changeTheme() {
+  setIsDarkTheme(!isDarkTheme);
   }
 
   const hasPrevious = currentEpisodeIndex > 0;
@@ -109,7 +116,9 @@ export function PlayerContextProvider({ children }: PlayerContextProviderProps) 
       toggleLoop,
       isShuffling,
       toggleShuffle,
-      clearPlayerState
+      clearPlayerState,
+      isDarkTheme,
+      changeTheme
       }} 
     >
       {children}

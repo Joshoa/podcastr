@@ -28,23 +28,25 @@ type HomeProps = {
 };
 
 export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
-  const { playList } = usePlayer();
+  const { playList, isDarkTheme } = usePlayer();
 
   const episodeList = [...latestEpisodes, ...allEpisodes];
 
   return (
-    <div className={styles.homepage}>
+    <div className={isDarkTheme? styles.homepage + ' ' + styles.darkTheme 
+      : styles.homepage}>
       <Head>
         <title>Home | Podcastr</title>
       </Head>
 
-      <section className={styles.latestEpisodes}>
+      <section className={isDarkTheme? styles.latestEpisodes + ' ' + styles.darkTheme 
+      : styles.latestEpisodes}>
         <h2>Últimos lançamentos</h2>
 
         <ul>
           {latestEpisodes.map((episode, index) => {
             return (
-              <li key={episode.id}>
+              <li className={isDarkTheme ? styles.darkTheme : ''} key={episode.id}>
                 <Image 
                   width={192} 
                   height={192} 
@@ -53,7 +55,8 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
                   objectFit="cover"
                 />
 
-                <div className={styles.episodeDetails}>
+                <div className={isDarkTheme? styles.episodeDetails + ' ' 
+                                + styles.darkTheme : styles.episodeDetails}>
                   <Link href={`/episodes/${episode.id}`}>
                     <a>{episode.title}</a>
                   </Link>
